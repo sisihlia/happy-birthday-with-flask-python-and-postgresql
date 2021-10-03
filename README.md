@@ -1,10 +1,12 @@
 # happy-birthday-with-flask-python-and-postgresql
 
-# Activate venv
-$ python -m venv env
+Activate venv
+======================
+          $ python -m venv env
+          $ source env/bin/activate
 
-# Source venv
-$ source env/bin/activate
+         
+         
 
 # Create DB
 $ python
