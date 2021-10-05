@@ -26,7 +26,7 @@ A Flask based RESTful API using SQLAlchemy to communicate with PostgreSQL
 ## API
 
 | HTTP  | Endpoint             | Description                                       |
-| ------|----------------------| ------------- ------------------------------------|
+| ------|----------------------| --------------------------------------------------|
 | GET   | /hello               | get all birthdates                                |
 | GET   | /hello/name          | get a birthdate by name                           |
 | PUT   | /hello/name data {}  | create(if name not exist)/update a name-birthdate |
