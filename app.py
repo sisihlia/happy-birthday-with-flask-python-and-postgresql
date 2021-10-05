@@ -12,12 +12,14 @@ app.config.from_pyfile('conf/psql-config.py')
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://%s:%s@%s/%s' % (
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://%s:%s@%s/%s' % (
     # ARGS.dbuser, ARGS.dbpass, ARGS.dbhost, ARGS.dbname
-    os.environ['DBUSER'], os.environ['DBPASS'], os.environ['DBHOST'], os.environ['DBNAME']
-)
+   # os.environ['DBUSER'], os.environ['DBPASS'], os.environ['DBHOST'], os.environ['DBNAME']
+#)
 
 db=SQLAlchemy(app)
+db.create_all()
+
 class Birthdates(db.Model):
     id=db.Column(db.Integer(), primary_key=True)
     name=db.Column(db.String(255), nullable=False)
@@ -81,6 +83,10 @@ def update_birthdate_cmd(id):
     db.session.commit()
     return jsonify(serialize_birthdate(birthdate_to_update,False)),204
 
+
+@app.before_first_request
+def create_database():
+     db.create_all()
 
 @app.route('/hello/<int:id>', methods=['PUT'])
 def update_birthdate(id):
@@ -201,4 +207,4 @@ def not_found(error):
 
 # Run Server
 if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0')
+  app.run(debug=True, host='0.0.0.0', port=5000)

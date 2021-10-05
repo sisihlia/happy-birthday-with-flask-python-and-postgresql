@@ -8,6 +8,8 @@ COPY . app.py /app/
 
 # Install packages from requirements.txt
 RUN pip install --upgrade pip &&\
-    pip install --trusted-host pypi.python.org -r requirements.txt
+    pip install -v -r requirements.txt
 
-CMD python app.py
+EXPOSE 5000
+
+CMD ["python", "./app.py"]
