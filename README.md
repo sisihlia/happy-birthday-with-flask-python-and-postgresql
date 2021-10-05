@@ -1,5 +1,8 @@
 # REST API with Flask and SQL Alchemy
 
+
+A Flask based RESTful API using SQLAlchemy to communicate with PostgreSQL
+
 ## Quick Start Using Venv
     # Activate venv
     $ python -m venv env
@@ -19,3 +22,12 @@
           
     #Test Server (http://localhost:5000)
     $ python -m unittest -v
+
+## API
+
+| HTTP  | Endpoint             | Description                                       |
+| ------|----------------------| ------------- ------------------------------------|
+| GET   | /hello               | get all birthdates                                |
+| GET   | /hello/name          | get a birthdate by name                           |
+| PUT   | /hello/name data {}  | create(if name not exist)/update a name-birthdate |
+| POST  | /hello data {}       | create a name-birthdate                           |
